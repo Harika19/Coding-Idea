@@ -1,0 +1,30 @@
+https://leetcode.com/problems/two-sum/description/
+
+Brute force approach:
+
+var twoSum = function(nums, target) {
+  for(let i = 0;  i < nums.length; i++) {
+        for (let j = 0; j < nums.length; j++) {
+            if(j === i) continue;                                  // you may not use the same element twice
+            if((nums[i] + nums[j]) === target) return [i, j];
+        }
+    }
+}
+
+
+using Hash table - Map in JS
+
+var twoSum = function(nums, target) {
+  let m = new Map();
+  for(let i =0;i<nums.length; i++){
+    let first = nums[i];
+    let second = target - first;
+    if(m.has(second)){
+      return [i, m.get(second)];
+    }else{
+      m.set(first, i);
+    }
+  }
+}
+
+console.log(twoSum([2,7,5,1,8],6))
