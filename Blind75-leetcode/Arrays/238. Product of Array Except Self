@@ -1,0 +1,38 @@
+https://leetcode.com/problems/product-of-array-except-self/
+
+// failed in case if 0 is present 
+
+
+function productExceptSelf(array) {
+  let result = []
+  if(array.length === 1) return array;
+  for (let i = 0; i < array.length; i++) {
+    let product = 1;
+    for (let j = 0; j < array.length; j++) {
+      product = (product * array[j]);
+      actual = product/array[i];
+    } 
+    result.push(actual);
+  }
+  return result
+}
+    
+console.log(productExceptSelf([-1]));
+
+
+
+// best one
+
+var productExceptSelf = function(nums) {
+  let r =[]
+   for(let i =0;i<nums.length;i++){
+     t = nums.splice(i,1)
+     r.push(multiply(nums))
+     nums.unshift(t[0])
+   }
+  return r
+};
+
+var multiply = function(arr){
+  return arr.reduce((a,i)=> a*i);
+}
