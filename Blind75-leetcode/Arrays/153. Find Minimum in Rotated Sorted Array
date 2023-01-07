@@ -1,4 +1,8 @@
 https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
+
+// use binary search approach
+
+
 /**
  * @param {number[]} nums
  * @return {number}
