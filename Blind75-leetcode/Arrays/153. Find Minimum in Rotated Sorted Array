@@ -2,6 +2,8 @@ https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/
 
 // use binary search approach
 
+//TC - O(log n)
+
 
 /**
  * @param {number[]} nums
