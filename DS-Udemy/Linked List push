@@ -54,6 +54,27 @@ class LinkedList{
     return this;
   }
 
+  pop(){
+    let prev = this.head;
+    let temp = this.head;
+    if(this.head === null) return undefined;
+    while(temp.next){
+      prev = temp;
+      temp= temp.next;
+    }
+    this.tail = prev;
+    this.tail.next = null;
+    this.length--;
+    
+    if(this.length ==0) {
+      this.head = null;
+      this.tail= null;
+    }
+    console.log('popped number', temp.value)
+  return temp;
+  }
+  
+
   addAtStart(value){
     const node1 = new Node(value);
     if(this.head === null){
@@ -78,6 +99,48 @@ class LinkedList{
   temp1.next = null;
   return temp1;
   }
+
+  getElementIndex(index){
+    if(index <0 || index >this.length) return undefined;
+    let temp2 = this.head;
+  for(let i =0;i<index; i ++){
+    temp2 = temp2.next;
+  }    
+    return temp2;
+  }
+
+
+  setValue(index, value){
+    let temp = this.getElementIndex(index);
+    if(temp){
+      temp.value = value;
+      return true;
+    }
+    return false;
+  }
+
+  insertAtIndex(index, value){
+    if(index === 0) return this.addAtStart(value);
+    if(index === this.length) return this.push(value);
+    if(index <0 || index >this.length) return false;
+    let temp = this.getElementIndex(index-1);
+    let node = new Node(value);
+    node.next = temp.next;
+    temp.next = node;
+    this.length++;
+    return true;
+  }
+
+  removeAtIndex(index){
+    if(index === 0) return this.removeAtStart();
+     if(index === this.length) return this.pop();
+    if(index <0 || index >this.length) return false;
+    let before = this.getElementIndex(index-1);
+    let temp = before.next;
+    before.next = temp.next;
+    this.length--;
+    return true;
+  }
   
 }
 
@@ -91,4 +154,11 @@ test.getLength();
 console.log(test.addAtStart(5));
 test.printAll();
 console.log('shiftt',test.removeAtStart());
+test.printAll();
+console.log(test.getElementIndex(2));
+console.log(test.setValue(1,8));
+test.printAll();
+console.log(test.insertAtIndex(0,9));
+test.printAll();
+console.log(test.removeAtIndex(2));
 test.printAll();
