@@ -1,0 +1,94 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class LinkedList{
+  constructor(value) {
+    const node = new Node(value);
+    this.head = node;
+    this.tail = this.head;
+    this.length = 1;
+  }
+
+  printAll() {
+    let temp = this.head;
+    while(temp !== null){
+      console.log('elements :', temp.value);
+      temp = temp.next;
+    }
+  }
+
+  getHead() {
+    if(this.head=== null){
+      console.log('Head is null')
+    }else{
+       console.log('head:', this.head.value);
+    }
+  }
+
+  getTail(){
+    if(this.tail === null){
+      console.log('Tail is null')
+    }else{
+      console.log('tail:', this.tail.value);
+    }
+  }
+
+  getLength(){
+    console.log('length:', this.length);
+  }
+
+  push(value){
+    const node = new Node(value);
+    if(!this.head){
+      this.head = node;
+      this.tail= node;
+    } else{
+      this.tail.next = node;
+      this.tail = node;
+    }
+    this.length++;
+    return this;
+  }
+
+  addAtStart(value){
+    const node1 = new Node(value);
+    if(this.head === null){
+      this.head = node1;
+      this.tail = node1;
+    }else{
+      node1.next = this.head;
+      this.head = node1;
+    }
+    this.length++;
+    return this;
+  }
+
+  removeAtStart(){
+    if(this.head === null) return undefined;
+    let temp1 = this.head;
+    this.head = this.head.next;
+    this.length--;
+  if (this.length === 0){
+    this.tail = null;
+  }
+  temp1.next = null;
+  return temp1;
+  }
+  
+}
+
+let test = new LinkedList(2);
+test.push(3);
+test.push(4);
+test.printAll();
+test.getHead()
+test.getTail()
+test.getLength();
+console.log(test.addAtStart(5));
+test.printAll();
+console.log('shiftt',test.removeAtStart());
+test.printAll();
