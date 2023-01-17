@@ -141,7 +141,22 @@ class LinkedList{
     this.length--;
     return true;
   }
-  
+
+  reverseLinkedList(){
+    let temp = this.head;
+    this.head = this.tail;
+    this.tail= temp;
+    let prev = null;
+    let next= temp.next;
+    for(let i =0;i<this.length;i++){
+      next = temp.next;
+      temp.next = prev;
+      prev = temp;
+      temp= next;
+    }
+    return this;
+  }
+
 }
 
 let test = new LinkedList(2);
@@ -161,4 +176,6 @@ test.printAll();
 console.log(test.insertAtIndex(0,9));
 test.printAll();
 console.log(test.removeAtIndex(2));
+test.printAll();
+console.log(test.reverseLinkedList());
 test.printAll();
