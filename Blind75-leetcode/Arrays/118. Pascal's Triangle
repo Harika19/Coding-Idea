@@ -1,0 +1,26 @@
+
+
+// https://leetcode.com/problems/pascals-triangle/submissions/880421450/
+
+/**
+ * @param {number} numRows
+ * @return {number[][]}
+ */
+var generate = function(numRows) {
+     if(numRows<0) return undefined;
+  if(numRows === 1) return [[1]];
+
+  let finalTriangle = [[1]];
+  for(let i =1; i<numRows;i++){
+    let prev =  finalTriangle[i-1];
+    let cur = [];
+    cur.push(1);
+    for(let j=1;j<prev.length;j++){
+      cur[j] = prev[j]+prev[j-1];
+    }
+    cur.push(1);
+    finalTriangle.push(cur);
+  }
+  
+  return finalTriangle;
+};
