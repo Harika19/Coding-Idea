@@ -1,0 +1,35 @@
+var swap =(nums,i1,i2)=> {
+  let t;
+  t=nums[i1];
+  nums[i1]=nums[i2];
+  nums[i2]= t;
+}
+
+var reverse = (nums,s)=> {
+  e = nums.length-1;
+  while(s<e){
+    swap(nums, s++,e--)
+  }
+}
+
+var nextPermutation = function (nums) {
+ let i1=-1, i2 = nums.length-1;
+  for(let i=nums.length-1; i>=0;i--){
+    if(nums[i]< nums[i+1]){
+      i1 = i;
+      break;
+    }
+  }
+
+  if(i1>=0){
+    for(let i=nums.length-1; i>=0;i--){
+    if(nums[i]> nums[i1]){
+      i2 = i;
+      break;
+    }
+  }
+    swap(nums, i1, i2);
+  }
+   reverse(nums, i1+1);
+  return nums;
+};
