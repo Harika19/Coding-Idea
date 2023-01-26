@@ -1,0 +1,81 @@
+QUEUE: ADD AT END(ENQUEUE) REMOVE AT START(DEQUEUE)
+
+———————————————————————————————
+		REMOVE. <-					<ADD>. <-
+———————————————————————————————
+
+
+
+		        PUSH/POP			PUSH/POP
+
+ARRAY - 		0(N).    ——————       O(1)
+
+			        0	1	2	3	4	5	-INDEX
+      
+      
+      
+      
+      
+
+class Node{
+  constructor(value){
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Queue{
+  constructor(value){
+    let node = new Node(value);
+    this.first = node;
+    this.last = this.first;
+    this.length= 1;
+  }
+
+  enqueue(value){
+    let node1 = new Node(value);
+    if(!this.first){
+      this.first = node1;
+      this.last = node1;
+    }else{
+      this.last.next = node1;
+      this.last = node1;
+    }
+    this.length++;
+    return this;
+  }
+
+  dequeue(){
+    let temp = this.first;
+    if(!this.first) return undefined;
+    if(this.length===1){
+      this.first = null;
+      this.last = null;
+    }else{
+    this.first = this.first.next;
+    temp.next = null;
+    }
+   
+    this.length--;
+    return temp;
+  }
+
+  showAll(){
+    let t = this.first;
+    while(t !=null){
+      console.log('all nodes', t.value);
+      t = t.next;
+    }
+  }
+  
+}
+
+let node2 = new Queue(2);
+
+console.log(node2.enqueue(3));
+console.log(node2.enqueue(4));
+console.log(node2.enqueue(5));
+console.log(node2.enqueue(7));
+node2.showAll()
+console.log('dequeued', node2.dequeue());
+node2.showAll()
