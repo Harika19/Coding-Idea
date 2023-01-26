@@ -1,5 +1,11 @@
 STACK - ADD AT START(PUSH) REMOVE AT START(POP) - SIMILAR TO LL
 
+
+—————————————————————————
+		REMOVE. <-					END|
+		<ADD>. <-						|
+—————————————————————————
+
 Don’t use array of implementing stack as push and pop TC = O(N)
 
 USE Linked list push -O(1) and pop = O(n)
