@@ -1,0 +1,54 @@
+class Node{
+  constructor(value){
+    this.value = value;
+    this.next = null;
+  }
+}
+
+class Stack{
+  constructor(value){
+    let node = new Node(value);
+    this.top = node;
+    this.length= 1;
+  }
+
+  push(value){
+    let node1 = new Node(value);
+    if(!this.top){
+      this.top = node1;
+    }else{
+      node1.next = this.top;
+      this.top = node1;
+    }
+    this.length++;
+    return this;
+  }
+
+  pop(){
+    if(!this.top) return undefined;
+    let temp = this.top;
+    this.top = this.top.next;
+    temp.next = null;
+    this.length--;
+    return temp;
+  }
+
+  showAll(){
+    let t = this.top;
+    while(t !=null){
+      console.log('all nodes', t.value);
+      t = t.next;
+    }
+  }
+  
+}
+
+let node2 = new Stack(2);
+
+console.log(node2.push(3));
+console.log(node2.push(4));
+console.log(node2.push(5));
+console.log(node2.push(7));
+node2.showAll()
+console.log(node2.pop());
+node2.showAll()
