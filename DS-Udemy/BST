@@ -1,0 +1,70 @@
+
+BST:
+
+TC - BEST - O(LOG N) 
+	WORST - O(N)
+
+BEST CASE -
+
+			LL					BST
+			
+INSERT		YES(O(1) ADD AT END))
+
+LOOKUP							YES
+
+REMOVE							YES
+
+
+
+
+
+
+
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BST {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(value) {
+    let newNode = new Node(value);
+    if(this.root === null){
+      this.root = newNode;
+      return this;
+    } 
+    let temp = this.root;
+    while(true){
+      if(temp.value === newNode.value) return undefined;
+      if(newNode.value< temp.value){
+        if(temp.left === null){
+          temp.left = newNode;
+          return this;
+        }
+        temp = temp.left;
+      }else{
+        if(temp.right === null){
+          temp.right = newNode;
+          return this;
+        }
+        temp = temp.right;
+      }
+    }
+  }
+}
+
+
+let tree = new BST();
+console.log(tree.insert(45));
+console.log(tree.insert(20));
+console.log(tree.insert(80));
+console.log(tree.insert(70));
+console.log(tree.insert(10));
+
+
