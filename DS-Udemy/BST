@@ -71,6 +71,14 @@ class BST {
     }
     return false;
   }
+
+  minValue(curr){
+    while(curr.left != null){
+      curr = curr.left;
+    }
+    return curr;
+  }
+  
 }
 
 
@@ -81,4 +89,7 @@ console.log(tree.insert(80));
 console.log(tree.insert(70));
 console.log(tree.insert(10));
 
+console.log(tree.contain(70))
 console.log(tree.contain(81))
+console.log(tree.minValue(tree.root))
+console.log(tree.minValue(tree.root.right))
