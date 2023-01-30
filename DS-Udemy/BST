@@ -6,9 +6,9 @@ TC - BEST - O(LOG N)
 
 BEST CASE -
 
-			LL					BST
+			LL				BST
 			
-INSERT		YES(O(1) ADD AT END))
+INSERT		YES(O(1) ADD AT END))			O(N) - WORST CASE
 
 LOOKUP							YES
 
