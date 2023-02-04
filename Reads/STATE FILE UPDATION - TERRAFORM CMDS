@@ -1,0 +1,36 @@
+STATE FILE 
+
+
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+/src#
+/src#
+/src#
+/src# terraform state list | grep module.stack.module.business_events.aws_route53_record.redis
+module.stack.module.business_events.aws_route53_record.redis
+/src#
+/src#
+/src#
+/src# terraform state pull > backup
+/src# ls -l backup
+-rw-r--r--. 1 root root 618209 Jun 13 09:54 backup
+/src# head backup
+{
+  "version": 4,
+  "terraform_version": "0.13.7",
+  "serial": 540,
+  "lineage": "c23c3f46-c4d6-eb8a-c5b9-4e4bad7be3b2",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "data",
+      "type": "aws_caller_identity",
+/src# terraform state rm module.stack.module.business_events.aws_route53_record.redis
+Removed module.stack.module.business_events.aws_route53_record.redis
+Successfully removed 1 resource instance(s).
+/src# 
