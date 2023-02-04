@@ -1,0 +1,58 @@
+DS:
+
+Selection sort :
+1. divide into 2 array - sorted and unsorted
+2. Compare 2 elements side by side  in unsorted and take the smallest and put it in start of sorted 
+3. 
+
+
+TC AND SC:
+Space Complexity  - MEASURE MEMORY ALLOCATED
+
+
+
+STACK - ADD AT START(PUSH) REMOVE AT START(POP) - SIMILAR TO LL
+
+
+—————————————————————————
+		REMOVE. <-					END|
+		<ADD>. <-						|
+—————————————————————————
+
+Don’t use array of implementing stack as push and pop TC = O(N)
+
+USE Linked list push -O(1) and pop = O(n)
+
+
+QUEUE: ADD AT END(ENQUEUE) REMOVE AT START(DEQUEUE)
+
+———————————————————————————————
+		REMOVE. <-	O(1)				<ADD>. <-
+———————————————————————————————
+
+
+
+		PUSH/POP			PUSH/POP
+
+ARRAY - 		0(N).    ——————       O(1)
+
+			0	1	2	3	4	5	-INDEX
+
+
+
+
+
+BST:
+
+TC - BEST - O(LOG N) 
+	WORST - O(N)
+
+BEST CASE -
+
+			LL					BST
+			
+INSERT		YES(O(1) ADD AT END))
+
+LOOKUP							YES
+
+REMOVE							YES
