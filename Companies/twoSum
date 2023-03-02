@@ -1,0 +1,14 @@
+var twoSum = function(nums, target) {
+  let m = new Map();
+  for(let i=0; i< nums.length;i++){
+    let first = nums[i]
+  let second = target - first;
+  if(m.has(second)){
+    return [i, m.get(second)]
+  }else{
+    m.set(first,i)
+  }   
+  }
+}
+
+console.log(twoSum([2,7,4,1,8],6))
