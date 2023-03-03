@@ -1,0 +1,17 @@
+const mergeTwoSortedArray = function(arr1, arr2){
+  let res =[]
+  while(arr1.length && arr2.length){
+    let ele = (arr1[0]<arr2[0])? arr1.shift(): arr2.shift();
+    res.push(ele)
+  }
+    if(arr1.length){
+      res = res.concat(arr1)
+    }else{
+      res = res.concat(arr2)
+    }
+  
+  return res
+}
+
+
+console.log(mergeTwoSortedArray([5,7,10,15],[1,3,8,23,70]))
