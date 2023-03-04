@@ -1,0 +1,12 @@
+NodeJs single threaded
+	•	Intro of JS
+	•	JS Engine in chrome - also give some ex of other engines like spider monkey in moz….
+	•	Then chrome v8 was found which is powerful …..
+	•	To make js work faster on server side , nodeJs ( runtime env ) came into picture .
+	•	By default Nodes is async.
+	•	Event driven arc - triggered by event
+	•	Single threaded - single application thread -> if 1000 req -> ack one by one but doest wait for single process to complete .
+	•	For cpu intensive tasks , as node js is single threaded , they are are up with worker threads to take are of these tasks for better performance
+	•	Dead locks won’t occur.
+	•	Streaming and chat applications - nodes is better
+	•	High computational tasks (cpu intensive), blocking IO - don’t use node js
