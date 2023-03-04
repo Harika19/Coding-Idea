@@ -1,0 +1,108 @@
+class Node{
+  constructor(value){
+    this.value = value;
+    this.left =   null;
+    this.right = null;
+  }
+}
+
+class BST{
+  constructor(){
+    this.root = null;
+  }
+
+  insert(value){
+    let newNode = new Node(value);
+    if(this.root === null){
+      this.root = newNode;
+      return this;
+    }
+    let temp = this.root;
+    while(true){
+       if (newNode.value === temp.value) return undefined;
+      if(newNode.value<temp.value){
+        if(temp.left == null){
+          temp.left = newNode;
+          return this
+        }
+        temp = temp.left;
+      }else{
+        if(temp.right == null){
+          temp.right = newNode;
+          return this
+        }
+        temp = temp.right;
+      }
+    }
+  }
+
+
+  BFS(){
+    let queue =[]
+    let res = []
+    let curr = this.root;
+    queue.push(curr)
+    while(queue.length){
+      curr = queue.shift()
+      res.push(curr.value)
+      if(curr.left) queue.push(curr.left)
+      if(curr.right) queue.push(curr.right)
+    }
+    return res
+  }
+
+  DFSPreOrder(){
+      let currentNode;
+    let res=[]
+    function traverse(currentNode){
+      res.push(currentNode.value)
+      if(currentNode.left) traverse(currentNode.left)
+      if(currentNode.right) traverse(currentNode.right)
+    }
+    traverse(this.root)
+    return res
+  }
+
+   DFSPostOrder(){
+      let currentNode;
+    let res=[]
+    function traverse(currentNode){
+      if(currentNode.left) traverse(currentNode.left)
+      if(currentNode.right) traverse(currentNode.right)
+      res.push(currentNode.value)
+    }
+    traverse(this.root)
+    return res
+  }
+
+   DFSInOrder(){
+      let currentNode;
+    let res=[]
+    function traverse(currentNode){
+      if(currentNode.left) traverse(currentNode.left)
+      res.push(currentNode.value)
+      if(currentNode.right) traverse(currentNode.right)
+    }
+    traverse(this.root)
+    return res
+  }
+
+  
+  
+}
+
+
+
+let tree = new BST();
+tree.insert(47);
+    tree.insert(21);
+    tree.insert(76);
+    tree.insert(18);
+    tree.insert(27);
+    tree.insert(52);
+    tree.insert(82);
+console.log(tree.BFS())
+  console.log( tree.DFSPreOrder() );
+  console.log( tree.DFSPostOrder() );
+  console.log( tree.DFSInOrder() );
+
