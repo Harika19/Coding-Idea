@@ -10,3 +10,24 @@ NodeJs single threaded
 	•	Dead locks won’t occur.
 	•	Streaming and chat applications - nodes is better
 	•	High computational tasks (cpu intensive), blocking IO - don’t use node js
+
+
+
+
+
+EVENT LOOP: https://dev.to/lydiahallie/javascript-visualized-promises-async-await-5gke
+
+console.log('11111')
+setTimeout(() => {
+  console.log('noooo')
+},0)
+Promise.resolve('pppppp').then(res=> console.log('yayyyyy'))
+console.log('222222')
+ 
+ 
+ //output:
+ 
+ 11111
+ 222222
+ yayyyyyy
+ noooooo
