@@ -1,0 +1,17 @@
+var convert = function(s, numRows) {
+    if(numRows ===1 || s.length < numRows) return s;
+
+    let c=0
+  let dir = false;
+  let arr = new Array(numRows).fill('')
+  for(let i =0;i<s.length;i++){
+    let cur = s[i]
+    arr[c] += cur
+    if(c===0 || c>=  numRows-1) dir = !dir;
+    dir? c++: c--
+  }
+  console.log('qqqqq', arr)
+  return arr.join('')
+};
+
+console.log(convert('PAYPALISHIRING', 3))
