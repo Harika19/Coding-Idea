@@ -1,0 +1,35 @@
+var zigzagLevelOrder = function(root) {
+    const result = []
+    if(!root) 
+        return result
+
+    const Q = []
+    Q.push(root)
+    
+    let isLeftToRight = false
+
+    while(Q.length>0){
+        let len = Q.length
+
+        // Storibg current level result
+        let currResult = []
+
+        // Switching between leftToright and rightToLeft at alternative level
+        isLeftToRight = !isLeftToRight
+
+        for(let i=0; i<len ; i++){
+            const node = Q.shift()
+            if(node.left)  Q.push(node.left)
+            if(node.right)  Q.push(node.right)
+
+            if(isLeftToRight){
+                currResult.push(node.val)
+            }else{
+                currResult.unshift(node.val)
+            }
+        }
+        result.push( currResult )
+    }
+
+    return result
+}; 
