@@ -1,0 +1,45 @@
+//TC - O(N2)
+
+
+var pivotIndex = function(nums) {
+  let left;
+  let right;
+    for(let i =0;i<nums.length;i++){
+        left =0
+      for(let j=0;j<i;j++){
+        left+=nums[j];
+      }
+      right =0
+      for(let j=i+1;j<nums.length;j++){
+        right+=nums[j]
+      }
+     if(left == right){
+       return i
+      }
+    }
+  return -1;
+};
+
+console.log(pivotIndex([1,7,3,6,5,6]))
+
+
+//TC - O(N)
+
+var pivotIndex = function(nums) {
+  let s=0;
+  let left=0;
+  for(let i=0;i<nums.length;i++){
+    s +=nums[i]
+  }
+  right =s
+  for(let j=0;j<nums.length;j++){
+    right = right - nums[j]
+    if(left === right){
+      return j
+    }
+    left +=nums[j]
+  }
+  return -1
+};
+
+console.log(pivotIndex([1,7,3,6,5,6]))
