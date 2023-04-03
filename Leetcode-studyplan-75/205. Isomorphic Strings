@@ -1,0 +1,24 @@
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isIsomorphic = function(s, t) {
+    if(s.length !== t.length) return false
+  let amap =new Map()
+  let bmap =new Map()
+ for(let i=0;i<s.length;i++){
+   if(amap.has(s[i]) && amap.get(s[i]) !== t[i]){
+     return false
+   }else{
+     amap.set(s[i], t[i])
+   }
+ 
+   if(bmap.has(t[i]) && bmap.get(t[i]) !== s[i]){
+     return false
+   }else{
+     bmap.set(t[i], s[i])
+   }
+ }
+  return true
+};
