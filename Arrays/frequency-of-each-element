@@ -1,0 +1,14 @@
+//ALTIMETRIC
+
+//Input:['India', 'USA','India','Brazil','USA']
+
+
+//now you need to display the output like { India: 2, USA: 2 }
+
+let duplicate = function(arr1){
+   const count = {};
+  arr1.forEach(e => count[e] ? count[e]++ : count[e] = 1 );
+  console.log(count)
+}
+
+console.log(duplicate(['India', 'USA','India','Brazil','USA']))
