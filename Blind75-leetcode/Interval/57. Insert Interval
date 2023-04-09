@@ -1,0 +1,23 @@
+var insert = function(intervals, newInterval) {
+     intervals.push(newInterval)
+  intervals.sort((a,b)=> a[0]-b[0])
+  
+  let r =[intervals[0]]
+  for(let i of intervals){
+    
+    let e1 =  r[r.length-1][1]
+    let s2 = i[0]
+    let e2 = i[1]
+    if(e1>=s2){
+      r[r.length-1][1] = Math.max(e1,e2)
+      
+    }else{
+      r.push(i)
+    }
+  }
+  return r
+};
+
+console.log(insert([[1,2],[3,5],[6,7],[8,10],[12,16]], [4,8]))
+
+
