@@ -1,0 +1,21 @@
+/**
+ * @param {number[][]} intervals
+ * @return {number}
+ */
+var eraseOverlapIntervals = function(intervals) {
+     intervals.sort((a,b)=>a[1]-b[1])
+  console.log('allll', intervals)
+    let count = 0;
+    let prev = 0;
+    for (let i = 1; i < intervals.length; i++) {
+      console.log( '111111', i,intervals[i],  prev, intervals[prev])
+        if (intervals[i][0] < intervals[prev][1]) {
+           console.log('222222', intervals[i][0], intervals[prev][1])
+            count++;
+        } else {
+            prev = i;
+          console.log('ppppp', prev);
+        }
+    }
+    return count;
+};
