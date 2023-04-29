@@ -1,0 +1,27 @@
+/**
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
+var characterReplacement = function(s, k) {
+  // use slliding window technique - have tract of count of chars , size of window - mac count of char in that window < = k , then update max result  
+  let l=0;
+  let map ={}
+  let maxCount=0;
+  let max=0;
+
+  for(let r=0;r<s.length; r++){
+      let ele = s[r]
+      map[ele] = (map[ele] || 0)+1
+      maxCount = Math.max(maxCount, map[ele])
+      while((r-l+1 - maxCount) > k){
+          map[s[l]] -=1
+          l+=1
+      }
+      max = Math.max(max, r-l+1)
+  }
+  return max
+
+};
+
+  
