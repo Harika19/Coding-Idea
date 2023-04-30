@@ -1,0 +1,16 @@
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+
+ // use map , add ele to map of s - then dectrement from map if it is present in t
+var isAnagram = function(s, t) {
+     s=s.split('').sort().join('')
+    t=t.split('').sort().join('')
+    if(s==t){
+        return true
+    }else{
+        return false
+    }
+};
