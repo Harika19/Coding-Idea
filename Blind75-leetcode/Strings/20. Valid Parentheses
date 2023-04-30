@@ -1,0 +1,23 @@
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+var isValid = function(s) {
+    let r =[]
+    let ob ={
+        ')':'(',
+        '}':'{',
+        ']':'[',
+    }
+    for(let i of s){
+        if(ob[i]){
+            if(ob[i]!== r.pop())
+            {
+                return false
+            }
+        }else{
+                r.push(i)
+            }
+    }
+    return r.length===0
+};
