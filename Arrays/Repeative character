@@ -16,3 +16,35 @@ return arr.join('')
 }
 
 console.log(charCount('AAAABBBCCCDDEFGG'))   //A4B3C3D2E1F1G2
+
+
+ 
+// second approach
+
+
+// Online Javascript Editor for free
+// Write, Edit and Run your Javascript code using JS Online Compiler
+
+function charCount (s) {
+s=s.split('')
+let obj ={}
+s.forEach(e => obj[e] ? obj[e]++ : obj[e]=1);
+let a = Object.keys(obj)
+let b= Object.values(obj)
+let arr=[]
+let j=0
+let k=0
+for(let i=0;i<(2*a.length);i++){
+    if(i%2==0){
+        arr.push(a[j])
+        j++
+    }else{
+        arr.push(b[k])
+        k++
+    }
+}
+return arr.join('')
+}
+
+console.log(charCount('AAAABBBCCCDDEFGG'))   //A4B3C3D2E1F1G2
+
