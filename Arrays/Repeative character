@@ -1,0 +1,18 @@
+function charCount (s) {
+s=s.split('')
+let j=0
+let c=1
+let arr=[]
+for(let i=0;i<s.length;i++){
+   if(s[i]==s[i+1]) {
+       c++
+   }else{
+       arr.push(s[i])
+       arr.push(c)
+       c=1
+   }
+}
+return arr.join('')
+}
+
+console.log(charCount('AAAABBBCCCDDEFGG'))   //A4B3C3D2E1F1G2
