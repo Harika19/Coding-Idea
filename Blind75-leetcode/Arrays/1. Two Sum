@@ -28,3 +28,30 @@ var twoSum = function(nums, target) {
 }
 
 console.log(twoSum([2,7,5,1,8],6))
+
+
+using 2 pointer approach
+
+
+var twoSum = function(nums, target) {
+let start = 0
+let end = nums.length-1
+let res = []
+let sum;
+while(start<end){
+    sum = nums[start]+nums[end]
+    if(sum ==target){
+        res.push(start+1)
+        res.push(end+1)
+        break
+    }else if(sum < target){
+        start++
+    }else{
+        end--
+    }
+}
+return res
+ 
+};
+
+console.log(twoSum([2,7,11,15], 9))
