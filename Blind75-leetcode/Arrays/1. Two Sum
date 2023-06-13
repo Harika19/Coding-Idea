@@ -1,6 +1,6 @@
 https://leetcode.com/problems/two-sum/description/
 
-Brute force approach:
+// Brute force approach:
 
 var twoSum = function(nums, target) {
   for(let i = 0;  i < nums.length; i++) {
@@ -12,7 +12,7 @@ var twoSum = function(nums, target) {
 }
 
 
-using Hash table - Map in JS
+// using Hash table - Map in JS
 
 var twoSum = function(nums, target) {
   let m = new Map();
@@ -30,7 +30,7 @@ var twoSum = function(nums, target) {
 console.log(twoSum([2,7,5,1,8],6))
 
 
-using 2 pointer approach
+// using 2 pointer approach
 
 
 var twoSum = function(nums, target) {
@@ -55,3 +55,46 @@ return res
 };
 
 console.log(twoSum([2,7,11,15], 9))
+
+
+// Binary search approach
+
+
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) {
+      return mid;
+    } else if (arr[mid] < target) {
+      left = mid + 1;
+    } else {
+      right = mid - 1;
+    }
+  }
+
+  return -1;
+}
+
+function twoSum(nums, target) {
+  const sortedNums = [...nums].sort((a, b) => a - b);
+
+  for (let i = 0; i < sortedNums.length; i++) {
+    const complement = target - sortedNums[i];
+    const complementIndex = binarySearch(sortedNums, complement);
+
+    if (complementIndex !== -1 && complementIndex !== i) {
+      return [i, complementIndex];
+    }
+  }
+
+  return [];
+}
+
+const nums = [2, 7, 11, 15];
+const target = 9;
+const indices = twoSum(nums, target);
+console.log(indices);
+
