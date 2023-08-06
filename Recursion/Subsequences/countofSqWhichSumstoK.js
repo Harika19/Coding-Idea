@@ -24,4 +24,4 @@ var main = function (arr, k) {
     return Subsequences(0, arr, 0, k);
 }
 
-console.log(main([3, 1, 2, 4, 5, 2 ],5))
+console.log(main([3, 1, 2, 4, 5 ],5))

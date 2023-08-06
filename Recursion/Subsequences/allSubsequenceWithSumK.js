@@ -8,6 +8,7 @@ var Subsequences = function (index, arr, newarr, sum, k) {
         }
         return;
     }
+    
     newarr.push(arr[index])
     sum+=arr[index]
     Subsequences(index + 1, arr, newarr,sum, k)
@@ -21,4 +22,4 @@ var main = function (arr, k) {
     return;
 }
 
-console.log(main([3, 1, 2, 4, 5, 2 ],5))
+console.log(main([1,2,1 ],2))
