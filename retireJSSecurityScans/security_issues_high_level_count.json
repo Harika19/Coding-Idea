@@ -1,0 +1,98 @@
+{
+  "securityIssueCount": 11235,
+  "issues": {
+    "moment.js": {
+      "severityCounts": {
+        "high": 8044,
+        "medium": 8
+      }
+    },
+    "jquery": {
+      "severityCounts": {
+        "medium": 2017,
+        "low": 452
+      }
+    },
+    "YUI": {
+      "severityCounts": {
+        "medium": 160
+      }
+    },
+    "angularjs": {
+      "severityCounts": {
+        "medium": 54,
+        "low": 19
+      }
+    },
+    "DOMPurify": {
+      "severityCounts": {
+        "medium": 17,
+        "low": 61,
+        "high": 6
+      }
+    },
+    "ckeditor": {
+      "severityCounts": {
+        "medium": 20,
+        "low": 20,
+        "Medium": 4
+      }
+    },
+    "jquery-ui": {
+      "severityCounts": {
+        "medium": 140
+      }
+    },
+    "vue": {
+      "severityCounts": {
+        "medium": 2
+      }
+    },
+    "highcharts": {
+      "severityCounts": {
+        "high": 92
+      }
+    },
+    "dojo": {
+      "severityCounts": {
+        "medium": 4,
+        "high": 3
+      }
+    },
+    "bootstrap": {
+      "severityCounts": {
+        "low": 14,
+        "medium": 16
+      }
+    },
+    "bootstrap-select": {
+      "severityCounts": {
+        "medium": 1,
+        "high": 1
+      }
+    },
+    "jquery.datatables": {
+      "severityCounts": {
+        "low": 1,
+        "high": 1,
+        "medium": 1
+      }
+    },
+    "nextjs": {
+      "severityCounts": {
+        "medium": 34,
+        "high": 34
+      }
+    },
+    "mustache.js": {
+      "severityCounts": {
+        "high": 5
+      }
+    },
+    "jquery-ui-dialog": {
+      "severityCounts": {
+        "medium": 4
+      }
+    }
+  }
+}

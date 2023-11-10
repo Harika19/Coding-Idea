@@ -17,3 +17,16 @@ var groupAnagrams = function(strs) {
     }
     return Object.values(map);
 };
+
+
+
+let sorted = strs.map(i=> i.split('').sort().join(''))
+   let map = new Map()
+   for(let i=0;i<strs.length;i++){
+    if(!map[sorted[i]]){
+        map[sorted[i]]= [strs[i]]
+    }else{
+        map[sorted[i]].push(strs[i])
+    }
+   }
+   return Object.values(map)
