@@ -12,7 +12,6 @@
 var coinChange = function(coins, amount) {
     
     let dp = Array(amount+1).fill(Number. MAX_VALUE);
-
     dp[0]=0
     for(let a=1;a<=amount; a++){
         for(let c of coins){

@@ -27,7 +27,7 @@ var isPalindrome = function(head) {
    slow.next = reverse(slow.next)
 
    // move slow to 1 step forward
-   slow = slow.next
+   slow = slow.next 
    
 
    // start a pointer from start and slow from mid

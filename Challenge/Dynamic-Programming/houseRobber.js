@@ -60,7 +60,7 @@ var rob = function(nums) {
      prev = curr 
     }
      return prev
- };
+};
 
  
 

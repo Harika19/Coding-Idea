@@ -17,8 +17,9 @@ var combinationSum4 = function (nums, target) {
     for(let total=1;total<=target; total++){
         map[total] =0
         for(let ele of nums){
+            console.log('total', total, 'ele', ele)
             map[total] += (map[total-ele]||0);
-            // console.log('map', )
+            console.log('map', map)
         }
         console.log(map)
     }

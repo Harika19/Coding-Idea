@@ -13,10 +13,6 @@ var characterReplacement = function(s, k) {
         maxi = Math.max(maxi, r-l+1)
     }
     return maxi
-   
-
 };
 
 console.log(characterReplacement('ABAB', 2))
-
-

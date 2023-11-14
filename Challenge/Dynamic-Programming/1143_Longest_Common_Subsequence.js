@@ -16,11 +16,14 @@ var Subsequence = function (text1, text2, dp) {
         if (ind1 < 0 || ind2 < 0) return 0
         if (dp[ind1][ind2] !== -1) return dp[ind1][ind2]
         if (text1[ind1] == text2[ind2]) {
+            console.log('3333', dp)
             return (dp[ind1][ind2] = 1 + mainLogic(ind1 - 1, ind2 - 1));
         } else {
+            console.log('2222', dp)
             return (dp[ind1][ind2] = Math.max(mainLogic(ind1, ind2 - 1), mainLogic(ind1 - 1, ind2)));
         }
     }
+    
     return mainLogic(text1.length - 1, text2.length - 1);
 }
 
@@ -28,3 +31,5 @@ var longestCommonSubsequence = function (text1, text2) {
     let dp = Array(text1.length).fill().map(() => Array(text2.length).fill(-1));
     return Subsequence(text1, text2, dp)
 };
+
+console.log(longestCommonSubsequence("abcde", "ace"))

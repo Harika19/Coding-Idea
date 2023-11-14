@@ -13,13 +13,16 @@ var Subsequence = function(nums, ind, prev, dp) {
         pick = 1 + Subsequence(nums, ind+1, ind, dp);
     }
     dp[ind][prev + 1] = Math.max(notPick, pick)
+    console.log('q11111', ind, prev+1,  dp[ind][prev + 1])
     return dp[ind][prev + 1]
 };
 
 var lengthOfLIS = function(nums) {
     let dp = new Array(nums.length).fill().map(() => new Array(nums.length).fill(-1));
+    
     return Subsequence(nums, 0, -1, dp);
 };
+console.log(lengthOfLIS([10,9,2,5,3,7,101,18]))
 
 // Input: nums = [10,9,2,5,3,7,101,18]
 // Output: 4
