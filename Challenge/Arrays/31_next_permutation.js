@@ -30,7 +30,7 @@ var permutation = function (nums) {
 }
 
 
-console.log(permutation([1, 2, 3]))
+//console.log(permutation([1, 2, 3]))
 
 // optimised - tc - O(3N), sc - o(1)
 
@@ -51,6 +51,7 @@ var nextPermutation = function(nums){
     let n = nums.length
     // finding breakpoint - point where sudden decrease 
     for(let i=n-2;i>=0;i--){
+        console.log(nums[i], nums[i+1])
         if(nums[i]<nums[i+1]){
             index = i
             break
@@ -64,6 +65,7 @@ var nextPermutation = function(nums){
     }
     // swap ele 
     for(let i=n-1;i>=index;i--){
+        console.log('2222', nums[i], nums[i+1])
         if(nums[i]>nums[index]){
             [nums[i],nums[index]] = [nums[index], nums[i]]
             break
@@ -77,5 +79,6 @@ var nextPermutation = function(nums){
 }
 
 
-// console.log(nextPermutation([1, 2, 3]))
+console.log(nextPermutation([1, 2, 3]))
+//console.log(nextPermutation([ 3,2,1]))
 // console.log(nextPermutation([1,3,2]))

@@ -1,4 +1,5 @@
 // https://leetcode.com/problems/longest-increasing-subsequence/description/
+//Time Complexity: O(N*N)
 
 // pick , not pick logic, need to have 2 var - prev and curr to keep track and to check if its increasing or not.
 var Subsequence = function(nums, ind, prev, dp) {

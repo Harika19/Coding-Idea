@@ -6,8 +6,6 @@ function ListNode(val, next) {
     this.next = (next===undefined ? null : next)
 }
 
-
-
 var addTwoNumbers = function(l1, l2) {
     let temp = new ListNode()
     let curr = temp

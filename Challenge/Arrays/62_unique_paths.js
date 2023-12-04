@@ -23,8 +23,7 @@ var uniquePaths1 = function(m, n) {
     return recursion(0,0,m,n,0,dp)
 };
 
-
-// console.log(uniquePaths1(2,3)) // 3
+ console.log(uniquePaths1(2,3)) // 3
 
 // other
 

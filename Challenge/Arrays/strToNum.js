@@ -15,7 +15,7 @@ var strTonum2 = function(str) {
    console.log(typeof(a1), typeof(a2), typeof(a3))
    return a1
 };
-//console.log(strTonum2('234'))
+console.log(strTonum2('234'))
 
 var strTonum3 = function(input) {
     // let str = input.split(',').join('') - if only , are there u can do this 

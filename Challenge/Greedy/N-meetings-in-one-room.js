@@ -15,11 +15,9 @@ let maxMeetings = function(s, f, n){
     }
 
     collectiveArr.sort((a,b)=> a[2]-b[2])
-    
     let f_last = collectiveArr[0][2]
     let res =[]
     res.push(collectiveArr[0][0])
-    console.log(collectiveArr, res)
     for(let i=1;i<collectiveArr.length;i++){
         if(collectiveArr[i][1]>f_last){
             res.push(collectiveArr[i][0])

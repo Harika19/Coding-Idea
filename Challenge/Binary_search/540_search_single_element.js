@@ -15,9 +15,9 @@ var singleNonDuplicate = function(nums) {
             return nums[mid]
         }
 
-        if(mid%2==0 && nums[mid]===nums[mid+1] || mid%2!==0 && nums[mid]===nums[mid-1]){
+        if(mid%2==0 && nums[mid]===nums[mid+1] || mid%2!==0 && nums[mid]===nums[mid-1]){ // eliminated left half
             low = mid+1
-        }else{
+        }else{  // eliminated left half
             high = mid -1
         }
     }

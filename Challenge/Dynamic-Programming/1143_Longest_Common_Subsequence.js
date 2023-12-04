@@ -16,10 +16,8 @@ var Subsequence = function (text1, text2, dp) {
         if (ind1 < 0 || ind2 < 0) return 0
         if (dp[ind1][ind2] !== -1) return dp[ind1][ind2]
         if (text1[ind1] == text2[ind2]) {
-            console.log('3333', dp)
             return (dp[ind1][ind2] = 1 + mainLogic(ind1 - 1, ind2 - 1));
         } else {
-            console.log('2222', dp)
             return (dp[ind1][ind2] = Math.max(mainLogic(ind1, ind2 - 1), mainLogic(ind1 - 1, ind2)));
         }
     }
