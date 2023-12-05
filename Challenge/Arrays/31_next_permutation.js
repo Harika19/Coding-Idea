@@ -63,7 +63,7 @@ var nextPermutation = function(nums){
     if(index == -1){
         return nums.reverse()
     }
-    // swap ele 
+    // swap ele -> check elemens from index till last , swap with ele geaer than index ele
     for(let i=n-1;i>=index;i--){
         console.log('2222', nums[i], nums[i+1])
         if(nums[i]>nums[index]){

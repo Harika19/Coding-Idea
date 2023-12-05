@@ -33,7 +33,7 @@ var uniquePaths1 = function(m, n) {
 const factarial = (n) => {
     if(n>1){return n*factarial(n-1)}
     else return 1;
-  };
+};
 
 var uniquePaths2 = function(m, n) {
     let n1 = m+n-2

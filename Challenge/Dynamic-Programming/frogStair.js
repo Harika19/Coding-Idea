@@ -1,4 +1,4 @@
-// https://takeuforward.org/data-structure/dynamic-programming-frog-jump-dp-3/
+// https://takeuforward.org/data-structure/dynamic-prog ramming-frog-jump-dp-3/
 
 // recursion
 
@@ -80,7 +80,7 @@ var frogStair = function(arr, n) {
         prev = curri
         
     }
-    return prev
+    return prev;
 };
 
 console.log(frogStair([30,10,60,10,60,50],6))

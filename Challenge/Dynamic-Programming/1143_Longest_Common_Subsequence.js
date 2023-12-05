@@ -17,7 +17,7 @@ var Subsequence = function (text1, text2, dp) {
         if (dp[ind1][ind2] !== -1) return dp[ind1][ind2]
         if (text1[ind1] == text2[ind2]) {
             return (dp[ind1][ind2] = 1 + mainLogic(ind1 - 1, ind2 - 1));
-        } else {
+        } else { 
             return (dp[ind1][ind2] = Math.max(mainLogic(ind1, ind2 - 1), mainLogic(ind1 - 1, ind2)));
         }
     }

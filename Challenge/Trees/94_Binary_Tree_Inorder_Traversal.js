@@ -19,13 +19,12 @@ function TreeNode(val, left, right) {
     this.right = (right === undefined ? null : right)
 }
 
-
 var inorderTraversal = function(root, res=[]) {
     if(!root) return [];
     if(root.left) inorderTraversal(root.left, res);
     res.push(root.val);
     if(root.right) inorderTraversal(root.right, res);
-    return res
+    return res;
 };
 
 // Input: root = [1,null,2,3]

@@ -16,7 +16,7 @@ var recursionTech = function (ans, nums, newArr, res) {
             res.set(nums[i], false)
         }
     }
-
+    
 }
 
 var printPermutation = function (nums) {
