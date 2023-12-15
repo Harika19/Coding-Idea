@@ -2,6 +2,8 @@
 
 // https://leetcode.com/problems/longest-palindromic-substring/description/
 
+// TC - O(N2), SC - O(1)
+
 var longestPalindrome = function(s) {
     if(s.length <= 1) return s;
         let max_len = 1;

@@ -20,6 +20,7 @@ var uniquePaths1 = function(m, n) {
     for (let i = 0; i < m; i++) {
         dp[i] = new Array(n).fill(-1);
     }
+    console.log('111',dp)
     return recursion(0,0,m,n,0,dp)
 };
 

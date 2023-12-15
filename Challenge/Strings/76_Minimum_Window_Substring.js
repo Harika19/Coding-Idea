@@ -30,7 +30,6 @@ var minWindow = function (s, t) {
             l++;
         }
 
-
     }
     return minwindow
 };

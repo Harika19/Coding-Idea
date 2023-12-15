@@ -9,7 +9,7 @@ var longestConsecutive = function(nums) {
     }
     let maxi = 1
 
-    for (let i = 0; i < nums.length; i++) {
+    for (let i = 0; i < set.size; i++) {
         if (!set.has(nums[i] - 1)) { // picks only starting elements - 1,100,200
             let c = 1
             while (set.has(nums[i] + 1)) {

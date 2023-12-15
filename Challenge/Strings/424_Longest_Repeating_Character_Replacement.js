@@ -1,3 +1,6 @@
+// https://leetcode.com/problems/longest-repeating-character-replacement/
+
+
 var characterReplacement = function(s, k) {
     let l=0;
     let map = new Map();
