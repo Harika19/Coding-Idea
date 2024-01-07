@@ -1,0 +1,65 @@
+Locations:
+	cordinate:
+  name:
+  id: 
+  
+Bikes:
+	Model:
+  id: 
+  count:
+  types: 
+  
+Bike:
+	...props
+
+Booking:
+	...props
+
+
+USER:
+
+GET /locations List<Locations>
+GET /bikes/{location_id} - Map<types, List<Bikes>>
+GET /bikes/{location_id}/info/{bike_Id} Bike
+GET /booking/{booking_id} Booking
+GET /user/bookings List<Booking>
+
+
+POST /booking   {User, Bike, Duration}   Booking
+POST /booking/{booking_id}/payment {Booking, Payment}
+
+DELETE /booking/{booking_id} cancel
+
+PUT /booking/{booking_id}
+
+
+
+
+Admin:
+
+
+GET /locations List<Locations>
+GET /bikes/{location_id} - Map<types, List<Bikes>>
+GET /bikes/{location_id}/info/{bike_Id} Bike
+GET /bikes/{location_id}/type/{type} - List<Bike>
+GET /booking/bookingId/{booking_id} Booking
+GET /booking/location/{location_id}  List<Bike>
+GET /booking/location/{location_id}/type/  List<Bike>
+GET /booking/location/{location_id}/
+GET /booking/paymentStatus/{status} Map<Bike, Int>
+GET /booking/location/{location_id}/paymentStatus/{status} Map<Bike, Int>
+
+
+POST /location
+POST /bikes/bike Bike # create bike
+POST /bikes/{location_id}/bike/{bike_Id} Bike # Add to the locasstion 
+
+
+PUT /bikes/bike Bike
+PUT /bikes/{location_id}/info/{bike_Id} Bike # modify the bike params 
+
+
+DELETE /bikes/bike Bike
+DELETE /bikes/{location_id}/info/{bike_Id} Bike #Remove bike from location
+
+

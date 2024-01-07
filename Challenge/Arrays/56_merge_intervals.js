@@ -3,7 +3,8 @@
 // Time Complexity: O(N*logN) + O(N), Space Complexity: O(N)
 
 var merge = function(intervals) {
-   intervals.sort((a,b)=> a[0]-b[0])
+   intervals.sort((a,b)=> a[0]-b[0]) // first ele ascending
+   console.log(intervals)
    let res = [intervals[0]]
    for(let i of intervals){
     let e1= res[res.length-1][1]

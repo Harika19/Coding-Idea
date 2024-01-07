@@ -1,0 +1,273 @@
+enum BikeSize { SMALL, MEDIUM, LARGE }
+enum ScooterType { GAS_MOTOR, ELECTRIC_MOTOR }
+enum VehicleStatus { AVAILABLE, RENTED, DAMAGED, RESERVED }
+
+// Vehicle base class
+class Vehicle {
+    String id;
+    VehicleStatus status;
+    double pricePerHour;
+}
+
+// Derived classes for Bike and Scooter
+class Bike extends Vehicle {
+    BikeSize size;
+}
+
+class Scooter extends Vehicle {
+    ScooterType type;
+}
+
+class RentalRecord {
+    String rentalId;
+    String vehicleId;
+    String userId;
+    LocalDateTime rentalTime;
+    LocalDateTime returnTime;
+    double totalCharge;
+}
+
+class Customer {
+    String customerId;
+    String name;
+    double balance; // Negative balance implies the customer owes money
+}
+
+// Manager class to handle rental operations
+class BikeRentalManager {
+    List<Bike> bikes;
+    List<Scooter> scooters;
+    List<RentalRecord> rentalRecords;
+    Map<String, Customer> customers;
+
+    Vehicle rentVehicle(String vehicleId, String customerId);
+    void returnVehicle(String rentalId);
+    void addCustomer(Customer customer);
+    void removeVehicle(String vehicleId); // Mark as damaged
+    void addVehicle(Vehicle vehicle);
+    void rentScooter(User user, Scooter scooter);
+    Map<ScooterType, Integer> getAvailableScooters();
+    Map<BikeSize, Integer> getAvailableBikes();
+    List<RentalRecord> getOverviewOfRentedItems();
+    Map<User, List<Bike>> getOverviewOfBikeRentedByUsers();
+    Map<User, List<Scooter>> getOverviewOfScooterRentedByUsers();
+    // Additional methods...
+}
+
+
+// Uses Strategy Pattern to allow for different payment algorithms
+class PaymentInfo {
+    String paymentId;
+    double amount;
+    LocalDateTime paymentDate;
+    PaymentStatus paymentStatus; // Enum for payment status
+    PaymentType paymentType; // Enum for payment type
+    boolean processPayment(PaymentInfo paymentInfo);
+}
+// Singleton Pattern for Inventory Manager
+// Ensures there is only one instance of the InventoryManag
+class InventoryManager {
+    private static InventoryManager instance;
+    private List<Vehicle> vehicles;
+}
+// Additional classes for handling payments, inventory, etc.
+
+=====================================================================================================
+
+DB DESIGN:
+
+Vehicles Table:
+
+CREATE TABLE Vehicles (
+    vehicle_id INT PRIMARY KEY AUTO_INCREMENT,
+    vehicle_type VARCHAR(255) NOT NULL,
+    subtype VARCHAR(255) NOT NULL, -- 'SMALL', 'MEDIUM', 'LARGE' for bikes, 'GAS_MOTOR', 'ELECTRIC_MOTOR' for scooters
+    status VARCHAR(255) NOT NULL, -- 'AVAILABLE', 'RENTED', 'DAMAGED', 'RESERVED'
+    price_per_hour DECIMAL(10, 2) NOT NULL
+);
+
+Customers Table:
+
+CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    balance DECIMAL(10, 2) DEFAULT 0.00 -- Assuming balance is updated with each rental and payment
+);
+
+
+Rentals Table
+
+CREATE TABLE Rentals (
+    rental_id INT PRIMARY KEY AUTO_INCREMENT,
+    vehicle_id INT NOT NULL,
+    customer_id INT NOT NULL,
+    rental_time DATETIME NOT NULL,
+    return_time DATETIME,
+    total_charge DECIMAL(10, 2) NOT NULL,
+    is_paid BOOLEAN DEFAULT FALSE, -- New column to track payment status
+    FOREIGN KEY (vehicle_id) REFERENCES Vehicles(vehicle_id),
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
+);
+
+=====================================================================================================
+
+DB QUERIES:
+
+How many small bikes do you have?
+SELECT COUNT(*) AS small_bikes_count FROM Vehicles
+WHERE vehicle_type = 'Bike' AND subtype = 'SMALL';
+
+
+
+What products are there for rent?
+SELECT vehicle_id, vehicle_type, subtype
+FROM Vehicles
+WHERE status = 'AVAILABLE';
+
+
+
+Does this customer have a balance (owe us money)? // NEED TO UPDATE
+SELECT balance FROM Customers WHERE customer_id = 'customer_id';
+
+What products are rented?
+SELECT v.vehicle_id, v.vehicle_type, v.subtype
+FROM Rentals r
+JOIN Vehicles v ON r.vehicle_id = v.vehicle_id
+WHERE r.return_time IS NULL;
+
+
+
+Are there products that are overdue for return? Who has them?
+SELECT v.vehicle_id, v.vehicle_type, v.subtype, r.customer_id
+FROM Rentals r
+JOIN Vehicles v ON r.vehicle_id = v.vehicle_id
+WHERE r.return_time < NOW() AND r.is_paid = FALSE;
+
+
+What products has a customer rented?
+SELECT v.vehicle_id, v.vehicle_type, v.subtype
+FROM Rentals r
+JOIN Vehicles v ON r.vehicle_id = v.vehicle_id
+WHERE r.customer_id = 'customer_id';
+
+=====================================================================================================
+
+Design Patterns:
+
+1. Factory Pattern: for createVehicle -> class BikeScooterFactory implements VehicleFactory 
+2. Strategy Pattern: For calculating the rental price, you can have different strategies based on the vehicle type, rental duration, and so on.
+3. Singleton Pattern:  (like a central inventory management system), use the singleton pattern
+4. Observer Pattern: observer pattern can be used for notification systems. notify the shop manager when a vehicle is rented or returned, or when inventory is low.
+
+=====================================================================================================
+
+1. Add a Product to Inventory
+
+POST - http://example.com/api/inventory/vehicles
+
+Request:
+{
+    "vehicleType": "Bike",
+    "subtype": "SMALL",
+    "status": "AVAILABLE",
+    "pricePerHour": 15.00
+}
+Response:
+Success:
+{
+    "statusCode": 201,
+    "message": "Vehicle added successfully",
+    "vehicleId": "veh12345"
+}
+Failure:
+{
+    "statusCode": 400,
+    "message": "Invalid vehicle details"
+}
+2. Add a Customer Endpoint to add a new customer to the system.
+
+POST - http://example.com/api/customers
+
+Request:
+{
+    "name": "John Doe",
+    "balance": 0.00
+}
+
+Response:
+Success:
+{
+    "statusCode": 201,
+    "message": "Customer added successfully",
+    "customerId": "cust12345"
+}
+Failure:
+{
+    "statusCode": 400,
+    "message": "Invalid customer data"
+}
+
+
+3. Remove a Product from Inventory Endpoint to remove a vehicle from the inventory.
+
+DELETE - http://example.com/api/inventory/vehicles/{vehicleId}
+
+Response:
+Success:
+{
+    "statusCode": 200,
+    "message": "Vehicle removed successfully"
+}
+Failure:
+{
+    "statusCode": 404,
+    "message": "Vehicle not found"
+}
+
+
+4. Record that a Product is Rented to a Customer Endpoint to record a new rental transaction.
+
+POST - http://example.com/api/rentals
+
+Request:
+{
+    "vehicleId": "veh12345",
+    "customerId": "cust12345",
+    "rentalTime": "2024-01-04T10:00:00"
+}
+
+Response:
+Success:
+{
+    "statusCode": 201,
+    "message": "Rental recorded successfully",
+    "rentalId": "rent12345"
+}
+Failure:
+{
+    "statusCode": 400,
+    "message": "Invalid rental details"
+}
+
+5. Create a Charge for the Customer Endpoint to create a charge for a customer's rental.
+
+POST - http://example.com/api/customers/{customerId}/charge
+
+Request:
+{
+    "rentalId": "rent12345",
+    "amount": 30.00
+}
+Response:
+Success:
+{
+    "statusCode": 201,
+    "message": "Charge created successfully",
+    "paymentId": "pay12345"
+}
+
+Failure:
+{
+    "statusCode": 400,
+    "message": "Invalid payment details"
+}

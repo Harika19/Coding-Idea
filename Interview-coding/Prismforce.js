@@ -31,5 +31,6 @@ console.log(max_consequtive_ele([51, 53, 54, 55]))
 *   sharding
 *   indexing
 *   partitioning
-*   views
+*   views - visuvalization of tables with filtered/selected coloums
+* denormalization
 */
