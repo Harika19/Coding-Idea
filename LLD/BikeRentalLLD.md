@@ -20,14 +20,14 @@ class VehicleId {
     String vehicleId;
 }
 
-// Vehicle base class
+
 class Vehicle {
     VehicleId vehicleId;
     VehicleStatus status;
     double pricePerHour;
 }
 
-// Derived classes for Bike and Scooter
+
 class Bike extends Vehicle {
     BikeType size;
 }
@@ -50,10 +50,10 @@ class RentalRecord {
 class Customer {
     String customerId;
     String name;
-    double balance; // Negative balance implies the customer owes money
+    double balance; 
 }
 
-// Manager class to handle rental operations
+
 class BikeRentalManager {
     // List<Bike> bikes;
     // List<Scooter> scooters;
@@ -78,6 +78,7 @@ class BikeRentalManager {
 
 
 // Uses Strategy Pattern to allow for different payment algorithms
+
 class PaymentInfo {
     String paymentId;
     rental_id
@@ -89,6 +90,7 @@ class PaymentInfo {
 }
 
 // Singleton Pattern for Inventory Manager
+
 class InventoryManager {
     private Map<VehicleId, Vehicle> vehicleMap; // Source of truth
     private Map<BikeType, List<Vehicle>> bikeInventory; 
