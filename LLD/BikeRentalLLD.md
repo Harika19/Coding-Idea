@@ -67,6 +67,7 @@ class BikeRentalManager {
 // Uses Strategy Pattern to allow for different payment algorithms
 class PaymentInfo {
     String paymentId;
+    rental_id
     double amount;
     LocalDateTime paymentDate;
     PaymentStatus paymentStatus; // Enum for payment status
@@ -165,46 +166,73 @@ CREATE TABLE Rentals (
     FOREIGN KEY (customer_id) REFERENCES Customers(customer_id)
 );
 
+CREATE TABLE Payments (
+    payment_id INT PRIMARY KEY AUTO_INCREMENT,
+    rental_id INT NOT NULL,
+    amount_paid DECIMAL(10, 2) NOT NULL,
+    payment_date DATETIME NOT NULL,
+    payment_type VARCHAR(255),  -- Optional, can include types like CASH, CREDIT_CARD, etc.
+    FOREIGN KEY (rental_id) REFERENCES Rentals(rental_id)
+);
+
 =====================================================================================================
 
 DB QUERIES:
 
 How many small bikes do you have?
-SELECT COUNT(*) AS small_bikes_count FROM Vehicles
-WHERE vehicle_type = 'Bike' AND subtype = 'SMALL';
+SELECT COUNT(*) AS small_bikes_count
+FROM Vehicles v
+JOIN VehicleType vt ON v.vehicle_type_id = vt.id
+WHERE vt.vehicle_type = 'Bike' AND vt.subtype = 'SMALL';
+
 
 
 
 What products are there for rent?
-SELECT vehicle_id, vehicle_type, subtype
-FROM Vehicles
-WHERE status = 'AVAILABLE';
+SELECT v.vehicle_id, vt.vehicle_type, vt.subtype
+FROM Vehicles v
+JOIN VehicleType vt ON v.vehicle_type_id = vt.id
+WHERE v.status = 'AVAILABLE';
+
 
 
 
 Does this customer have a balance (owe us money)? // NEED TO UPDATE
-SELECT balance FROM Customers WHERE customer_id = 'customer_id';
+SELECT c.customer_id, SUM(r.total_charge) - IFNULL(SUM(p.amount_paid), 0) AS balance_owed
+FROM Customers c
+JOIN Rentals r ON c.customer_id = r.customer_id
+LEFT JOIN Payments p ON r.rental_id = p.rental_id
+WHERE c.customer_id = 'customer_id' AND r.is_paid = FALSE
+GROUP BY c.customer_id
+HAVING balance_owed > 0;
+
 
 What products are rented?
-SELECT v.vehicle_id, v.vehicle_type, v.subtype
+SELECT v.vehicle_id, vt.vehicle_type, vt.subtype
 FROM Rentals r
 JOIN Vehicles v ON r.vehicle_id = v.vehicle_id
+JOIN VehicleType vt ON v.vehicle_type_id = vt.id
 WHERE r.return_time IS NULL;
 
 
 
+
 Are there products that are overdue for return? Who has them?
-SELECT v.vehicle_id, v.vehicle_type, v.subtype, r.customer_id
+SELECT v.vehicle_id, vt.vehicle_type, vt.subtype, r.customer_id
 FROM Rentals r
 JOIN Vehicles v ON r.vehicle_id = v.vehicle_id
+JOIN VehicleType vt ON v.vehicle_type_id = vt.id
 WHERE r.return_time < NOW() AND r.is_paid = FALSE;
 
 
+
 What products has a customer rented?
-SELECT v.vehicle_id, v.vehicle_type, v.subtype
+SELECT v.vehicle_id, vt.vehicle_type, vt.subtype
 FROM Rentals r
 JOIN Vehicles v ON r.vehicle_id = v.vehicle_id
+JOIN VehicleType vt ON v.vehicle_type_id = vt.id
 WHERE r.customer_id = 'customer_id';
+
 
 =====================================================================================================
 
