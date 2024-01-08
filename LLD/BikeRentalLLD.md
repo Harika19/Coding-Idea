@@ -1,4 +1,17 @@
-enum BikeSize { SMALL, MEDIUM, LARGE }
+Requirements:
+
+1. Keep track of inventory
+2. Keep track of customers
+3. Keep track of stock items
+4. 2 products - Bikes and Scooters
+5. Bikes sizes - Small, Medium, Large - fits small, medium and large humans
+6. Scooters - electric motor , gas motor styles
+7. Keep track of scooters seperately
+
+
+=================================================================
+
+enum BikeType { SMALL, MEDIUM, LARGE }
 enum ScooterType { GAS_MOTOR, ELECTRIC_MOTOR }
 enum VehicleStatus { AVAILABLE, RENTED, DAMAGED, RESERVED }
 
@@ -16,7 +29,7 @@ class Vehicle {
 
 // Derived classes for Bike and Scooter
 class Bike extends Vehicle {
-    BikeSize size;
+    BikeType size;
 }
 
 class Scooter extends Vehicle {
@@ -57,7 +70,7 @@ class BikeRentalManager {
     void addVehicle(Vehicle vehicle);
     void rentScooter(User user, Scooter scooter);
     Map<ScooterType, Integer> getAvailableScooters();
-    Map<BikeSize, Integer> getAvailableBikes();
+    Map<BikeType, Integer> getAvailableBikes();
     List<RentalRecord> getOverviewOfRentedItems();
     Map<User, List<Bike>> getOverviewOfBikeRentedByUsers();
     Map<User, List<Scooter>> getOverviewOfScooterRentedByUsers();
