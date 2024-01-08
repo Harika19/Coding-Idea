@@ -2,9 +2,14 @@ enum BikeSize { SMALL, MEDIUM, LARGE }
 enum ScooterType { GAS_MOTOR, ELECTRIC_MOTOR }
 enum VehicleStatus { AVAILABLE, RENTED, DAMAGED, RESERVED }
 
+
+class VehicleId {
+    String vehicleId;
+}
+
 // Vehicle base class
 class Vehicle {
-    String id;
+    VehicleId vehicleId;
     VehicleStatus status;
     double pricePerHour;
 }
@@ -19,6 +24,8 @@ class Scooter extends Vehicle {
 }
 
 class RentalRecord {
+    InventoryManager inventoryManager;
+
     String rentalId;
     String vehicleId;
     String userId;
@@ -35,8 +42,11 @@ class Customer {
 
 // Manager class to handle rental operations
 class BikeRentalManager {
-    List<Bike> bikes;
-    List<Scooter> scooters;
+    // List<Bike> bikes;
+    // List<Scooter> scooters;
+
+    InventoryManager inventoryManager;
+    
     List<RentalRecord> rentalRecords;
     Map<String, Customer> customers;
 
@@ -51,7 +61,6 @@ class BikeRentalManager {
     List<RentalRecord> getOverviewOfRentedItems();
     Map<User, List<Bike>> getOverviewOfBikeRentedByUsers();
     Map<User, List<Scooter>> getOverviewOfScooterRentedByUsers();
-    // Additional methods...
 }
 
 
@@ -64,26 +73,73 @@ class PaymentInfo {
     PaymentType paymentType; // Enum for payment type
     boolean processPayment(PaymentInfo paymentInfo);
 }
+
 // Singleton Pattern for Inventory Manager
-// Ensures there is only one instance of the InventoryManag
 class InventoryManager {
-    private static InventoryManager instance;
-    private List<Vehicle> vehicles;
+    private Map<VehicleId, Vehicle> vehicleMap; // Source of truth
+    private Map<BikeType, List<Vehicle>> bikeInventory; 
+    private Map<ScooterType, List<Vehicle>> scooterInventory;
+
+
+    public void addVehicle(Vehicle vehicle) {
+        vehicleMap.put(vehicle.vehcileId, vehicle);
+
+        if(vehicle instanceof Bike) {
+            bikeInventory.put(vehicle.bikeType, vehicle);
+        } else {
+            scooterInventory.put(vehcile.ScooterType, vehcile);
+        }      
+    }
+
+    public int getInventory(VehicleId vehicleId) {
+
+    }
+
+    public int getInventory(Vehicle vehicle, BikeType bikeType) {
+        return bikeInventory.get(bikeType).size();
+    }
+    
+    public int getInventory(Vehicle vehicle, ScooterType scooter) {
+        return scooterInventory.get(scooter).size();
+    }
 }
-// Additional classes for handling payments, inventory, etc.
+
+
+/*
+
+BikeType and ScooterType 
+    - no reltionship
+    - issue we face are at
+        - Rentalrecord
+        - Inventory
+
+    Solution: Need to figure out some way to get the type of both   
+        - Inventory 
+            - Map<vehicleId, Vehicle>
+        
+        - 
+
+ */
 
 =====================================================================================================
 
 DB DESIGN:
 
+Vehicle Type Table:
+vehicle_type
+subtype
+id
+
+
 Vehicles Table:
 
 CREATE TABLE Vehicles (
     vehicle_id INT PRIMARY KEY AUTO_INCREMENT,
-    vehicle_type VARCHAR(255) NOT NULL,
-    subtype VARCHAR(255) NOT NULL, -- 'SMALL', 'MEDIUM', 'LARGE' for bikes, 'GAS_MOTOR', 'ELECTRIC_MOTOR' for scooters
+    <!-- vehicle_type VARCHAR(255) NOT NULL,
+    subtype VARCHAR(255) NOT NULL, -- 'SMALL', 'MEDIUM', 'LARGE' for bikes, 'GAS_MOTOR', 'ELECTRIC_MOTOR' for scooters -->
     status VARCHAR(255) NOT NULL, -- 'AVAILABLE', 'RENTED', 'DAMAGED', 'RESERVED'
     price_per_hour DECIMAL(10, 2) NOT NULL
+    vehicle_type_id Foreign key
 );
 
 Customers Table:

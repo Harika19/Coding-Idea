@@ -1,8 +1,4 @@
-<!-- - A bike can be of size small, medium and large and the person can only ride a bike of the size which is compatible to him.
-- A bike can also be a scooter
- -->
 
- 
 class ParkingLot {
 	
 	List<ParkingFloor> parkingFloors;
