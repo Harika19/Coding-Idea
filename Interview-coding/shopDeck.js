@@ -9,15 +9,26 @@
 // console.log(first);
 // console.log(rest);
 
-let promise1 = new Promise((resolve, reject)=>{
-    let condition = true;
-    if(condition){
-        resolve("Hey, resolved");
-    }else{
-        reject("Oh no rejected");
-    }
-});
+// let promise1 = new Promise((resolve, reject)=>{
+//     let condition = true;
+//     if(condition){
+//         resolve("Hey, resolved");
+//     }else{
+//         reject("Oh no rejected");
+//     }
+// });
 
-promise1.then((result)=>{
-    console.log("result", result);
+// promise1.then((result)=>{
+//     console.log("result", result);
+// })
+
+const express = require('express');
+const app = express();
+const PORT = 3000;
+middleware();
+app.get('/', (req,res)=>{
+    res.send('Hello world');
+})
+app.listen(PORT,()=>{
+    console.log("server is running at 3000");
 })

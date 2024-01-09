@@ -21,7 +21,7 @@ class VehicleId {
 }
 
 
-class Vehicle {
+abstract class Vehicle {
     VehicleId vehicleId;
     VehicleStatus status;
     double pricePerHour;
@@ -47,14 +47,22 @@ class RentalRecord {
     double totalCharge;
 }
 
-class Customer {
+abstarct class Person{
     String customerId;
-    String name;
+    String name;    
+}
+
+class Customer extends Person {
     double balance; 
 }
 
+interface BikeRentalManagerInterface { // Interface segregation
+    Vehicle rentVehicle(String vehicleId, String customerId);
+    void returnVehicle(String rentalId);
+}
 
-class BikeRentalManager {
+
+class BikeRentalManager implements BikeRentalManagerInterface {
     // List<Bike> bikes;
     // List<Scooter> scooters;
 
@@ -62,9 +70,6 @@ class BikeRentalManager {
     
     List<RentalRecord> rentalRecords;
     Map<String, Customer> customers;
-
-    Vehicle rentVehicle(String vehicleId, String customerId);
-    void returnVehicle(String rentalId);
     void addCustomer(Customer customer);
     void removeVehicle(String vehicleId); // Mark as damaged
     void addVehicle(Vehicle vehicle);
@@ -144,7 +149,7 @@ DB DESIGN:
 Vehicle Type Table:
 vehicle_type
 subtype
-id
+vehicle_type_id
 
 
 Vehicles Table:

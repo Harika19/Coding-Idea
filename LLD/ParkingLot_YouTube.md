@@ -1,5 +1,10 @@
 
-class ParkingLot {
+interface ParkingLotInterface {
+    public boolean isParkingSpaceAvailableForVehicle(Vehicle vehicle);
+	public boolean updateParkingAttndant(ParkingAttendant parkingAttendant, int gateId)
+}
+
+class ParkingLot implements ParkingLotInterface {
 	
 	List<ParkingFloor> parkingFloors;
 	List<Entrance> entrances;
@@ -9,8 +14,12 @@ class ParkingLot {
 
 	String parkingLotName;
 
-	public boolean isParkingSpaceAvailableForVehicle(Vehicle vehicle);
-	public boolean updateParkingAttndant(ParkingAttendant parkingAttendant, int gateId)
+	public boolean isParkingSpaceAvailableForVehicle(Vehicle vehicle){
+
+    }
+	public boolean updateParkingAttndant(ParkingAttendant parkingAttendant, int gateId){
+        
+    }
 
 }
 
@@ -23,7 +32,7 @@ class ParkingFloor {
 
 }
 
-class Gate {
+abstract class Gate {
 	int gateId;
 	ParkingAttendant parkingAttendant;
 }
@@ -33,9 +42,7 @@ class Entrance extends Gate {
 }
 
 class Exit extends Gate {
-
 	public ParkingTicket payForParking(ParkingTicket parkingTicket, PaymentType paymentType);
-
 }
 
 
@@ -67,7 +74,7 @@ class ParkingDisplayBoard {
 }
 
 
-class Account {
+abstract class Account {
 
 	String name;
 	String email;
