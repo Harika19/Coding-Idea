@@ -173,3 +173,64 @@ public enum PaymentStatus {
 // Observer Pattern:
 
 The DisplayBoard can be an observer to the parking spots, updating the available spots in real-time as cars come and go.
+
+API DESIGN:
+
+Parking Lot:
+
+Park vehicle:
+
+
+POST - http://xyz.com/parking/v0/park
+Request: {
+    "vehicleDetail": {
+        "number": 200,
+        "type": CAR
+    },
+    "time": "2024-01-04"
+    "userId": "fghf567655"
+}
+
+Response: 
+    Success:
+        {
+            "statusCode": 201,
+            "ticketDetail": {
+                "ticketId": "ti1121"
+            }
+        }
+
+    Failure:
+        {
+            "statusCode": 400,
+            "message": "Given date is not valid"
+        }
+
+        {
+            "statusCode": 500,
+            "message": "SOmething wrong internally"
+        }
+
+GET - http://xyz.com/parking/v0/floor/{floor-id}/spots
+Response: {
+    "statusCode": 200,
+    "spots": [
+        1,2,3,4
+    ]
+}
+
+
+GET - http://xyz.com/parking/v0/floor/{floor-id}/availableSpots
+Response: {
+    "statusCode": 200,
+    "availableSpots": [
+        1,4
+    ]
+}
+
+
+GET - http://xyz.com/parking/v0/floor/{floor-id}/checkSpotAvilability?spotId={spotId}
+Response: {
+    "statusCode": 200,
+    "isAvailable": true
+}
