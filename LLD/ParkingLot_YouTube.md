@@ -18,7 +18,7 @@ class ParkingLot implements ParkingLotInterface {
 
     }
 	public boolean updateParkingAttndant(ParkingAttendant parkingAttendant, int gateId){
-        
+
     }
 
 }
@@ -26,7 +26,7 @@ class ParkingLot implements ParkingLotInterface {
 class ParkingFloor {
 	
 	int levelId;
-	List<ParkingSpace> parkingSpaces;
+	Map<<parking_spot,List<ParkingSpace>> parkingSpaces;
 
 	ParkingDisplayBoard parkingDisplayBoard;
 
@@ -56,13 +56,11 @@ class Address {
 }
 
 class ParkingSpace {
-	
 	int spaceId;
 	boolean isFree;
 	double costPerHour;
 	Vehicle vehicle;
 	ParkingSpaceType parkingSpaceType;
-
 }
 
 class ParkingDisplayBoard {
@@ -172,3 +170,6 @@ public enum PaymentStatus {
 }
 
 
+// Observer Pattern:
+
+The DisplayBoard can be an observer to the parking spots, updating the available spots in real-time as cars come and go.
