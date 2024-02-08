@@ -36,7 +36,6 @@ var isPalindrome = function(head) {
        head = head.next
        slow = slow.next
    }
-   return true
-  
+   return true;
 
 };

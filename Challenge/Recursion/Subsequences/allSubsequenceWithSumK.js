@@ -4,7 +4,6 @@
 var Subsequences = function (index, arr, newarr, res, sum, k) {
     if (index == arr.length) {
         if(k == sum){
-            console.log('arr:', newarr)
             res.push([...newarr]);
         }
         return;

@@ -16,13 +16,9 @@ enum ScooterType { GAS_MOTOR, ELECTRIC_MOTOR }
 enum VehicleStatus { AVAILABLE, RENTED, DAMAGED, RESERVED }
 
 
-class VehicleId {
-    String vehicleId;
-}
-
 
 abstract class Vehicle {
-    VehicleId vehicleId;
+    String vehicleId;
     VehicleStatus status;
     double pricePerHour;
 }

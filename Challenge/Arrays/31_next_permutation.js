@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/next-permutation/
 
-// brute force - generate all perms - then sort it - return next element of given element.
+// brute force - generate all perms (N * N!) - then sort it - return next element of given element.
 
 
 // below is code to print all permutations
