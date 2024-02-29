@@ -7,8 +7,8 @@ var rotate = function(matrix) {
     // find transpose
     for(let i=0;i<row;i++)    {
         for(let j=i;j<col;j++){
-            console.log('11111',i,j,  matrix[i][j] ,matrix[j][i])
-            //[matrix[j][i], matrix[i][j]]= [matrix[i][j], matrix[j][i]]
+            // console.log('11111',i,j,  matrix[i][j] ,matrix[j][i])
+            [matrix[j][i], matrix[i][j]]= [matrix[i][j], matrix[j][i]]
         }
     }
 

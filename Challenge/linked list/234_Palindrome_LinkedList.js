@@ -19,7 +19,7 @@ var isPalindrome = function(head) {
 
    let slow = head , fast = head
    // find middle ele
-   while(fast.next && fast.next.next){
+   while(fast && fast.next && fast.next.next){
        slow = slow.next
        fast = fast.next.next
    }

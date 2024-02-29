@@ -77,7 +77,7 @@ class BikeRentalManager implements BikeRentalManagerInterface {
     Map<User, List<Scooter>> getOverviewOfScooterRentedByUsers();
 }
 
-
+                                     
 // Uses Strategy Pattern to allow for different payment algorithms
 
 class PaymentInfo {

@@ -40,7 +40,7 @@ var uniquePaths2 = function(m, n) {
     let n1 = m+n-2
     let r1 = m-1
     let res = 1
-   res= factarial(n1)/factarial(n1-r1)*factarial(r1) // CHECK AGAIN 
+    res = factarial(n1)/factarial(n1-r1)*factarial(r1) // CHECK AGAIN 
     return res
 };
 

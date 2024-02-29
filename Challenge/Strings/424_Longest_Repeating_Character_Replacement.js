@@ -13,9 +13,9 @@ var characterReplacement = function(s, k) {
             map[s[l]]-=1
              l+=1
         }
-        maxi = Math.max(maxi, r-l+1)
+        maxi = Math.max(maxi, r-l+1);
     }
-    return maxi
+    return maxi;
 };
 
-console.log(characterReplacement('ABAB', 2))
+console.log(characterReplacement('ABAB', 2));

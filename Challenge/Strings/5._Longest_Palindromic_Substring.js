@@ -12,14 +12,16 @@ var longestPalindrome = function(s) {
         
         // Odd length
         for(let i = 0; i < n-1; ++i){
+            console.log("i", i)
             let l = i, r = i;
             while(l >= 0 && r < n){
                 if(s.charAt(l) == s.charAt(r)){
                     l--; r++;
-                }else
+                }else{
                     break;
+                }
             }
-            let len = r-l-1;
+            let len = r-l-1; 
             if(len > max_len){
                 max_len = len;
                 st = l+1;
@@ -45,7 +47,6 @@ var longestPalindrome = function(s) {
         }
         
         return s.slice(st, end + 1);
-
 };
 
 console.log(longestPalindrome('babad'))

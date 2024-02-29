@@ -3,7 +3,7 @@
 var detectCycle = function(head) {
     let slow = head, fast = head
     let isCycle = false
-    while(fast && fast.next){
+    while( fast && fast.next && fast.next.next){
         slow = slow.next
         fast = fast.next.next
         if(slow === fast){
@@ -11,13 +11,13 @@ var detectCycle = function(head) {
             break
         }
     }
-    let curr = head
+    slow = head
     if(isCycle){
-        while(curr !== fast){
+        while(slow !== fast){
              fast = fast.next
-             curr = curr.next
+             slow = slow.next
         }
-        return curr
+        return slow
     }else{
         return null
     }

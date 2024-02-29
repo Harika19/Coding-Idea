@@ -58,7 +58,7 @@ var nextPermutation = function(nums){
         }
     }
 
-    // reverse array i.e [1,2,3] -> next perm [3,2,1]
+    // reverse array i.e [3,2,1]  -> next perm [1,2,3]
 
     if(index == -1){
         return nums.reverse()
@@ -80,5 +80,5 @@ var nextPermutation = function(nums){
 
 
 console.log(nextPermutation([1, 2, 3]))
-//console.log(nextPermutation([ 3,2,1]))
-// console.log(nextPermutation([1,3,2]))
+console.log(nextPermutation([ 3,2,1]))
+console.log(nextPermutation([1,3,2]))

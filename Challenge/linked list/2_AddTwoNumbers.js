@@ -7,6 +7,7 @@ function ListNode(val, next) {
 }
 
 var addTwoNumbers = function(l1, l2) {
+    console.log(l1)
     let temp = new ListNode()
     let curr = temp
     let carry =0
