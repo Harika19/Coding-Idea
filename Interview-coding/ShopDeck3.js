@@ -93,6 +93,8 @@ kafka.produce("topic1", {id:1, text : "Hi sample message"});
 const consumerA = new KafkaConsumer();
 consumerA
 
+//ROund 4 - puzzle :
+
 
 # Question 4: 
 
@@ -129,3 +131,6 @@ A2, B1, B2, C1, C2 - RACE
 A2> B1> C1> B2>C2 - RESULT
 
  
+// Round 5 - experience - HLD
+
+//Round 6 - HLD: 
