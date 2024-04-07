@@ -1,3 +1,5 @@
+//  Cloning an object means creating a new object with the same properties as the original.
+
 function deepClone(obj){
 if(obj ==null || typeof obj !== 'object'){
     return obj;

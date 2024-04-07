@@ -36,7 +36,7 @@ var recursionTech1 = function(index, arr,newArr, res,target){
     }
 
     for(let i=index;i<arr.length;i++) {
-        // if(i> index && arr[i] == arr[i-1]) continue;
+        if(i> index && arr[i] == arr[i-1]) continue
         if(arr[i]> target) break;
 
         newArr.push(arr[i])
