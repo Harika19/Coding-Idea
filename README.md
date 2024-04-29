@@ -15,3 +15,5 @@ Neetcode doc - https://docs.google.com/spreadsheets/d/1A2PaQKcdwO_lwxz9bAnxXnIQa
 Neetcode imp - https://neetcode.io/practice
 
 DS Read - https://humane-steel-9e3.notion.site/Data-Structures-20b80b01b1f6447a8966d6a6e53f1231
+
+Coding Post - https://www.linkedin.com/posts/thecreatorsir_dsa-softwareengineer-leetcode-activity-7126784119203581952-Ew0e?utm_source=share&utm_medium=member_desktop
